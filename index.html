@@ -8,7 +8,6 @@
 <input ng-model="text" type = "text" class="input1" placeholder ="Type your city name here">
 <input type = "submit" id = "submit" value = "Search" class="input2"/>
 
-
 </form>
 <body>
 	<div class= "middle_div">
@@ -31,7 +30,7 @@
 		var dm = $scope;
 		dm.submit = function(){
 			dm.city = this.text
-			$http.get('http://api.openweathermap.org/data/2.5/weather?q='+dm.city+'&APPID=ID').success(function(response){
+			$http.get('http://api.openweathermap.org/data/2.5/weather?q='+dm.city+'&APPID=API_KEY').success(function(response){
             dm.newdata= response;
             dm.tempe = Math.round(response.main.temp-270)+ " Celsius";
             dm.city ='';
@@ -91,12 +90,12 @@
 		position: fixed;
 		left:0;
 		bottom:0;
+		color: white;
+		font-size: 10px;
 		background-color: black;
 		text-align: center;
-		color: white;
 		height:40px;
 		width: 100%;
-		/*margin-top: 50px;*/
 	}
 	form{
 		display: inline-block;
@@ -115,9 +114,9 @@
 
 
 	</style>
-<div class = "footer">
-<p>hgdcjabcm</p></div>
-</body>
 
+	<div class = "footer">
+	Vidya: Weather API</div>
+</body>
 <html>
 
