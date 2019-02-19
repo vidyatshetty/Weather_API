@@ -1,0 +1,123 @@
+<html ng-app = "simpleWeatherApi" ng-controller="searchCityCtrl">
+<head>
+<script type= "text/javascript", src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+<h1>SIMPLE WEATHER API</h1>
+
+</head>
+<form ng-submit="submit()" >
+<input ng-model="text" type = "text" class="input1" placeholder ="Type your city name here">
+<input type = "submit" id = "submit" value = "Search" class="input2"/>
+
+
+</form>
+<body>
+	<div class= "middle_div">
+		<div class = "city_name">
+			{{newdata.name}}
+		</div>
+		<div class= "lat">
+			<p>{{tempe}}</p>
+		<div>
+
+		<div class="weather_icon">
+			<img ng-src = "http://openweathermap.org/img/w/{{newdata.weather[0].icon}}.png">
+			<p>{{newdata.weather[0].description}}</p>
+		</div>
+
+    <div>
+	<script type="text/javascript">
+	var app = angular.module('simpleWeatherApi', [] )
+	app.controller('searchCityCtrl', function($scope, $http,$location){
+		var dm = $scope;
+		dm.submit = function(){
+			dm.city = this.text
+			$http.get('http://api.openweathermap.org/data/2.5/weather?q='+dm.city+'&APPID=ID').success(function(response){
+            dm.newdata= response;
+            dm.tempe = Math.round(response.main.temp-270)+ " Celsius";
+            dm.city ='';
+
+			});
+		}
+	});
+	
+	</script>
+
+	<style>
+	body{
+		background-image: linear-gradient(black,white);
+		text-align: center;
+	}
+
+	.middle_div{
+		padding: 20px 20px 20px 20px;
+		border-radius: 20px;
+		width:800px; 
+		margin:0 auto;
+		background-image: linear-gradient(black,white);
+		/*opacity: 0.6;*/
+		color: :white;
+		height: 300px;
+        margin-top: 100px;
+        color: white;
+	}
+	.city_name{
+		font-size: 50px;
+	}
+	.lat{
+		font-size: 40px
+	}
+	.weather_icon{
+		float:left;
+	}
+	.weather_icon img{
+		width: 98px;
+	}
+	.weather_icon p{
+		float:right;
+		font-size: 29px;
+	}
+	.temperature {
+		font-size: 50px;
+	}
+	.temperature{
+		float:left;
+	}
+	h1{
+		color:white;
+		text-align: center;
+		    margin-top: 44px;
+	}
+	.footer{
+		position: fixed;
+		left:0;
+		bottom:0;
+		background-color: black;
+		text-align: center;
+		color: white;
+		height:40px;
+		width: 100%;
+		/*margin-top: 50px;*/
+	}
+	form{
+		display: inline-block;
+		margin-top: 20px;
+	}
+	.input1{
+		width: 350px;
+		height:50px;
+		border-radius: 5px;
+	}
+	.input2{
+        width: 100px;
+		height:50px;
+		border-radius: 5px;
+	}
+
+
+	</style>
+<div class = "footer">
+<p>hgdcjabcm</p></div>
+</body>
+
+<html>
+
