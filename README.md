@@ -1,6 +1,6 @@
 "Weather_API"
 
-Add your API Key in the http request (index.html file)
+Add your API Key in the http request (index.html file Line 34)
 
 Example:
 
